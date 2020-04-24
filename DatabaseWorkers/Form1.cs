@@ -12,9 +12,21 @@ namespace DatabaseWorkers
 {
     public partial class Form1 : Form
     {
+        DatabaseWorkersDataContext DatabaseDC = new DatabaseWorkersDataContext();
         public Form1()
         {
             InitializeComponent();
+            LoadWorkers();
+
+            //listBoxWorkes.DisplayMember = "FirstName";
+        }
+
+        private void LoadWorkers()
+        {
+            foreach(Worker w in DatabaseDC.Workers)
+            {
+                listBoxWorkes.Items.Add(w);
+            }
         }
     }
 }
