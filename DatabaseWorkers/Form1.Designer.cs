@@ -40,7 +40,7 @@
             this.dateTimePickerDateBegin = new System.Windows.Forms.DateTimePicker();
             this.numericUpDownSalary = new System.Windows.Forms.NumericUpDown();
             this.checkBoxManager = new System.Windows.Forms.CheckBox();
-            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSalary)).BeginInit();
             this.SuspendLayout();
@@ -52,6 +52,7 @@
             this.listBoxWorkes.Name = "listBoxWorkes";
             this.listBoxWorkes.Size = new System.Drawing.Size(319, 420);
             this.listBoxWorkes.TabIndex = 0;
+            this.listBoxWorkes.SelectedIndexChanged += new System.EventHandler(this.listBoxWorkes_SelectedIndexChanged);
             // 
             // tableLayoutPanel1
             // 
@@ -149,6 +150,11 @@
             // 
             this.numericUpDownSalary.DecimalPlaces = 2;
             this.numericUpDownSalary.Location = new System.Drawing.Point(91, 81);
+            this.numericUpDownSalary.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.numericUpDownSalary.Name = "numericUpDownSalary";
             this.numericUpDownSalary.Size = new System.Drawing.Size(200, 20);
             this.numericUpDownSalary.TabIndex = 8;
@@ -162,22 +168,22 @@
             this.checkBoxManager.TabIndex = 9;
             this.checkBoxManager.UseVisualStyleBackColor = true;
             // 
-            // buttonAdd
+            // buttonSave
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(338, 180);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(84, 23);
-            this.buttonAdd.TabIndex = 2;
-            this.buttonAdd.Text = "Dodaj";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            this.buttonSave.Location = new System.Drawing.Point(338, 180);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(84, 23);
+            this.buttonSave.TabIndex = 2;
+            this.buttonSave.Text = "Dodaj";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.buttonAdd);
+            this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.listBoxWorkes);
             this.Name = "Form1";
@@ -203,7 +209,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerDateBegin;
         private System.Windows.Forms.NumericUpDown numericUpDownSalary;
         private System.Windows.Forms.CheckBox checkBoxManager;
-        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonSave;
     }
 }
 

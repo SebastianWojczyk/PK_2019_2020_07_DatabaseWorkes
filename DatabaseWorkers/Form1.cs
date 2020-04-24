@@ -30,16 +30,28 @@ namespace DatabaseWorkers
             }
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
+        private void buttonSave_Click(object sender, EventArgs e)
         {
-            Worker newWorker = new Worker();
-            newWorker.FirstName = textBoxFirstName.Text;
-            newWorker.LastName = textBoxLastName.Text;
-            newWorker.DateBegin = dateTimePickerDateBegin.Value;
-            newWorker.Salary = numericUpDownSalary.Value;
-            newWorker.Manager = checkBoxManager.Checked;
+            Worker workerToSave = null;
+            //edycja
+            if (listBoxWorkes.SelectedItems.Count == 1)
+            {
+                listBoxWorkes.Enabled = true;
+                workerToSave = listBoxWorkes.SelectedItem as Worker;
+            }
+            //dodawanie
+            else
+            {
+                workerToSave = new Worker();
+                DatabaseDC.Workers.InsertOnSubmit(workerToSave);
+            }
 
-            DatabaseDC.Workers.InsertOnSubmit(newWorker);
+            workerToSave.FirstName = textBoxFirstName.Text;
+            workerToSave.LastName = textBoxLastName.Text;
+            workerToSave.DateBegin = dateTimePickerDateBegin.Value;
+            workerToSave.Salary = numericUpDownSalary.Value;
+            workerToSave.Manager = checkBoxManager.Checked;
+
             DatabaseDC.SubmitChanges();
 
             textBoxFirstName.Text = "";
@@ -49,6 +61,23 @@ namespace DatabaseWorkers
             checkBoxManager.Checked = false;
 
             LoadWorkers();
+        }
+
+        private void listBoxWorkes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(listBoxWorkes.SelectedItems.Count==1)
+            {
+                listBoxWorkes.Enabled = false;
+                buttonSave.Text = "Zmień";
+
+                Worker selectedWorker = listBoxWorkes.SelectedItem as Worker;
+
+                textBoxFirstName.Text = selectedWorker.FirstName;
+                textBoxLastName.Text = selectedWorker.LastName;
+                dateTimePickerDateBegin.Value = selectedWorker.DateBegin;
+                numericUpDownSalary.Value = selectedWorker.Salary;
+                checkBoxManager.Checked = selectedWorker.Manager;
+            }
         }
     }
 }
