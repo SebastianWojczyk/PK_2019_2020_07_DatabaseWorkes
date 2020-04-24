@@ -23,10 +23,32 @@ namespace DatabaseWorkers
 
         private void LoadWorkers()
         {
-            foreach(Worker w in DatabaseDC.Workers)
+            listBoxWorkes.Items.Clear();
+            foreach (Worker w in DatabaseDC.Workers)
             {
                 listBoxWorkes.Items.Add(w);
             }
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            Worker newWorker = new Worker();
+            newWorker.FirstName = textBoxFirstName.Text;
+            newWorker.LastName = textBoxLastName.Text;
+            newWorker.DateBegin = dateTimePickerDateBegin.Value;
+            newWorker.Salary = numericUpDownSalary.Value;
+            newWorker.Manager = checkBoxManager.Checked;
+
+            DatabaseDC.Workers.InsertOnSubmit(newWorker);
+            DatabaseDC.SubmitChanges();
+
+            textBoxFirstName.Text = "";
+            textBoxLastName.Text = "";
+            dateTimePickerDateBegin.Value = DateTime.Today;
+            numericUpDownSalary.Value = 0m;
+            checkBoxManager.Checked = false;
+
+            LoadWorkers();
         }
     }
 }
