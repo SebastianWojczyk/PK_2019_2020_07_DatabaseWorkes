@@ -37,6 +37,9 @@ namespace DatabaseWorkers
             if (listBoxWorkes.SelectedItems.Count == 1)
             {
                 listBoxWorkes.Enabled = true;
+                buttonDelete.Visible = false;
+                buttonSave.Text = "Dodaj";
+
                 workerToSave = listBoxWorkes.SelectedItem as Worker;
             }
             //dodawanie
@@ -54,13 +57,18 @@ namespace DatabaseWorkers
 
             DatabaseDC.SubmitChanges();
 
+            ClearForm();
+
+            LoadWorkers();
+        }
+
+        private void ClearForm()
+        {
             textBoxFirstName.Text = "";
             textBoxLastName.Text = "";
             dateTimePickerDateBegin.Value = DateTime.Today;
             numericUpDownSalary.Value = 0m;
             checkBoxManager.Checked = false;
-
-            LoadWorkers();
         }
 
         private void listBoxWorkes_SelectedIndexChanged(object sender, EventArgs e)
@@ -69,6 +77,7 @@ namespace DatabaseWorkers
             {
                 listBoxWorkes.Enabled = false;
                 buttonSave.Text = "Zmień";
+                buttonDelete.Visible = true;
 
                 Worker selectedWorker = listBoxWorkes.SelectedItem as Worker;
 
@@ -77,6 +86,26 @@ namespace DatabaseWorkers
                 dateTimePickerDateBegin.Value = selectedWorker.DateBegin;
                 numericUpDownSalary.Value = selectedWorker.Salary;
                 checkBoxManager.Checked = selectedWorker.Manager;
+            }
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            if (listBoxWorkes.SelectedItems.Count == 1)
+            {
+                Worker selectedWorker = listBoxWorkes.SelectedItem as Worker;
+
+                DatabaseDC.Workers.DeleteOnSubmit(selectedWorker);
+
+                DatabaseDC.SubmitChanges();
+
+                listBoxWorkes.Enabled = true;
+                buttonSave.Text = "Dodaj";
+                buttonDelete.Visible = false;
+                
+                ClearForm();
+
+                LoadWorkers();
             }
         }
     }

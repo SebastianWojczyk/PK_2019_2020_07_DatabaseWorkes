@@ -41,6 +41,7 @@
             this.numericUpDownSalary = new System.Windows.Forms.NumericUpDown();
             this.checkBoxManager = new System.Windows.Forms.CheckBox();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSalary)).BeginInit();
             this.SuspendLayout();
@@ -178,11 +179,23 @@
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Location = new System.Drawing.Point(428, 180);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(84, 23);
+            this.buttonDelete.TabIndex = 3;
+            this.buttonDelete.Text = "Usuń";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Visible = false;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.listBoxWorkes);
@@ -210,6 +223,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDownSalary;
         private System.Windows.Forms.CheckBox checkBoxManager;
         private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }
 
