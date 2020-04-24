@@ -51,15 +51,15 @@
             this.listBoxWorkes.FormattingEnabled = true;
             this.listBoxWorkes.Location = new System.Drawing.Point(13, 13);
             this.listBoxWorkes.Name = "listBoxWorkes";
-            this.listBoxWorkes.Size = new System.Drawing.Size(319, 420);
+            this.listBoxWorkes.Size = new System.Drawing.Size(319, 173);
             this.listBoxWorkes.TabIndex = 0;
             this.listBoxWorkes.SelectedIndexChanged += new System.EventHandler(this.listBoxWorkes_SelectedIndexChanged);
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.77778F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 74.22222F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.66666F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
@@ -78,7 +78,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(345, 161);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(300, 139);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // label1
@@ -104,7 +104,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(3, 52);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 26);
+            this.label3.Size = new System.Drawing.Size(90, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Data zatrudnienia";
             // 
@@ -128,42 +128,52 @@
             // 
             // textBoxFirstName
             // 
-            this.textBoxFirstName.Location = new System.Drawing.Point(91, 3);
+            this.textBoxFirstName.Location = new System.Drawing.Point(105, 3);
             this.textBoxFirstName.Name = "textBoxFirstName";
-            this.textBoxFirstName.Size = new System.Drawing.Size(200, 20);
+            this.textBoxFirstName.Size = new System.Drawing.Size(192, 20);
             this.textBoxFirstName.TabIndex = 5;
             // 
             // textBoxLastName
             // 
-            this.textBoxLastName.Location = new System.Drawing.Point(91, 29);
+            this.textBoxLastName.Location = new System.Drawing.Point(105, 29);
             this.textBoxLastName.Name = "textBoxLastName";
-            this.textBoxLastName.Size = new System.Drawing.Size(200, 20);
+            this.textBoxLastName.Size = new System.Drawing.Size(192, 20);
             this.textBoxLastName.TabIndex = 6;
             // 
             // dateTimePickerDateBegin
             // 
-            this.dateTimePickerDateBegin.Location = new System.Drawing.Point(91, 55);
+            this.dateTimePickerDateBegin.Location = new System.Drawing.Point(105, 55);
             this.dateTimePickerDateBegin.Name = "dateTimePickerDateBegin";
-            this.dateTimePickerDateBegin.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerDateBegin.Size = new System.Drawing.Size(192, 20);
             this.dateTimePickerDateBegin.TabIndex = 7;
             // 
             // numericUpDownSalary
             // 
             this.numericUpDownSalary.DecimalPlaces = 2;
-            this.numericUpDownSalary.Location = new System.Drawing.Point(91, 81);
+            this.numericUpDownSalary.Location = new System.Drawing.Point(105, 81);
             this.numericUpDownSalary.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
+            this.numericUpDownSalary.Minimum = new decimal(new int[] {
+            1500,
+            0,
+            0,
+            0});
             this.numericUpDownSalary.Name = "numericUpDownSalary";
-            this.numericUpDownSalary.Size = new System.Drawing.Size(200, 20);
+            this.numericUpDownSalary.Size = new System.Drawing.Size(192, 20);
             this.numericUpDownSalary.TabIndex = 8;
+            this.numericUpDownSalary.Value = new decimal(new int[] {
+            1500,
+            0,
+            0,
+            0});
             // 
             // checkBoxManager
             // 
             this.checkBoxManager.AutoSize = true;
-            this.checkBoxManager.Location = new System.Drawing.Point(91, 107);
+            this.checkBoxManager.Location = new System.Drawing.Point(105, 107);
             this.checkBoxManager.Name = "checkBoxManager";
             this.checkBoxManager.Size = new System.Drawing.Size(15, 14);
             this.checkBoxManager.TabIndex = 9;
@@ -171,7 +181,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(338, 180);
+            this.buttonSave.Location = new System.Drawing.Point(338, 158);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(84, 23);
             this.buttonSave.TabIndex = 2;
@@ -181,7 +191,7 @@
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(428, 180);
+            this.buttonDelete.Location = new System.Drawing.Point(428, 158);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(84, 23);
             this.buttonDelete.TabIndex = 3;
@@ -194,13 +204,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.listBoxWorkes);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Database for workers";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSalary)).EndInit();

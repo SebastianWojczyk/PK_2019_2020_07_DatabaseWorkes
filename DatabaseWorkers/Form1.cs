@@ -32,34 +32,58 @@ namespace DatabaseWorkers
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            Worker workerToSave = null;
-            //edycja
-            if (listBoxWorkes.SelectedItems.Count == 1)
+            if (IsWorkerFormValid())
             {
-                listBoxWorkes.Enabled = true;
-                buttonDelete.Visible = false;
-                buttonSave.Text = "Dodaj";
+                Worker workerToSave = null;
+                //edycja
+                if (listBoxWorkes.SelectedItems.Count == 1)
+                {
+                    listBoxWorkes.Enabled = true;
+                    buttonDelete.Visible = false;
+                    buttonSave.Text = "Dodaj";
 
-                workerToSave = listBoxWorkes.SelectedItem as Worker;
+                    workerToSave = listBoxWorkes.SelectedItem as Worker;
+                }
+                //dodawanie
+                else
+                {
+                    workerToSave = new Worker();
+                    DatabaseDC.Workers.InsertOnSubmit(workerToSave);
+                }
+
+                workerToSave.FirstName = textBoxFirstName.Text;
+                workerToSave.LastName = textBoxLastName.Text;
+                workerToSave.DateBegin = dateTimePickerDateBegin.Value;
+                workerToSave.Salary = numericUpDownSalary.Value;
+                workerToSave.Manager = checkBoxManager.Checked;
+
+                DatabaseDC.SubmitChanges();
+
+                ClearForm();
+
+                LoadWorkers();
             }
-            //dodawanie
             else
             {
-                workerToSave = new Worker();
-                DatabaseDC.Workers.InsertOnSubmit(workerToSave);
+                MessageBox.Show("Formularz wypełniony niepoprawnie.");
             }
+        }
 
-            workerToSave.FirstName = textBoxFirstName.Text;
-            workerToSave.LastName = textBoxLastName.Text;
-            workerToSave.DateBegin = dateTimePickerDateBegin.Value;
-            workerToSave.Salary = numericUpDownSalary.Value;
-            workerToSave.Manager = checkBoxManager.Checked;
-
-            DatabaseDC.SubmitChanges();
-
-            ClearForm();
-
-            LoadWorkers();
+        private bool IsWorkerFormValid()
+        {
+            if(textBoxFirstName.Text.Length==0)
+            {
+                return false;
+            }
+            if (textBoxLastName.Text.Length == 0)
+            {
+                return false;
+            }
+            if(dateTimePickerDateBegin.Value > DateTime.Today)
+            {
+                return false;
+            }
+            return true;
         }
 
         private void ClearForm()
@@ -67,7 +91,7 @@ namespace DatabaseWorkers
             textBoxFirstName.Text = "";
             textBoxLastName.Text = "";
             dateTimePickerDateBegin.Value = DateTime.Today;
-            numericUpDownSalary.Value = 0m;
+            numericUpDownSalary.Value = numericUpDownSalary.Minimum;
             checkBoxManager.Checked = false;
         }
 
